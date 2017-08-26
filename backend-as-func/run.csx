@@ -40,8 +40,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
         // Get a list of reports.
         var reports = await client.Reports.GetReportsInGroupAsync(GroupId);
 
-        // Pick the 3rd report in group (also known as workspace)
-        var report = reports.Value.Skip(2).First();
+        // Pick 1st report in group (also known as workspace)
+        var report = reports.Value.FirstOrDefault();
+
+        // OR pick the 3rd report in group (also known as workspace)
+        // var report = reports.Value.Skip(2).First();
 
         if (report == null)
         {
