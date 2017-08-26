@@ -27,7 +27,7 @@ HTML5/JavaScript frontend with jQuery `.click()` event handlers to control the e
 A Flask application containing both frontend and backend.
 
 ![Oauth Dance Gif](oauth-dance.gif)
-Last frame of this GIF is conviniently provided ![as PNG](oauth-dance.png).
+Last frame of this GIF is conviniently provided [as PNG](oauth-dance.png).
 
 Slide borrowed from this highly recommended video on v2 embedding -
 
