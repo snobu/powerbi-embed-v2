@@ -50,9 +50,10 @@ def get_token():
     response = requests.get(
         'https://api.powerbi.com/v1.0/myorg/groups/' + group_id + '/reports', headers=headers)
 
+    # Pick the 1st report in the App Workspace (aka group)
     bi_reports = json.loads(response.text)['value']
-    report_id = bi_reports[2]['id']
-    embed_url = bi_reports[2]['embedUrl']
+    report_id = bi_reports[0]['id']
+    embed_url = bi_reports[0]['embedUrl']
 
     post_data = post_data = \
     """
