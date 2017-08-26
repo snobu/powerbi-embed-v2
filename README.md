@@ -7,6 +7,8 @@ Publish to **App Workspace**, not _My Workspace_, this is important. It should b
 
 ![Screenshot](screenshot.png)
 
+You can test drive the demo here: http://powerbi-static-frontend.azurewebsites.net/
+
 Original contributors (Microsoft):
 - Andrey Vykhodtsev - https://github.com/vykhand
 - Adrian Calinescu - https://github.com/snobu
