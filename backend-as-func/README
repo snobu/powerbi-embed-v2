@@ -1,6 +1,0 @@
-### Wait, where do i get that Workspace ID from?
-
-1. Login to dev.powerbi.com with your PowerBIMaster account (that has the Premium subscription).
-2. Go to **Workspaces -> App Workspaces** and pick the workspace you'll deploy the sample report to.
-3. The workspace is the GUID after /groups/
-   (i.e. https://msit.powerbi.com/groups/c692d43d-xxxx-xxxx-xxxx-xxxxxxxx/groupwelcome
