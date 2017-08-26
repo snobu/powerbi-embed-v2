@@ -24,7 +24,7 @@ C# HTTP Trigger Azure Function acting as backend (returns embed token).
 HTML5/JavaScript frontend with jQuery `.click()` event handlers to control the embedded report.
 
 **python-flask**<br>
-A Flask application containing both frontend and backend.<br>
+A Flask application containing both frontend and backend:
 - Add your secrets to `secrets.sh`
 - Add `secrets.sh` to `.gitignore` (avoid accidental publishing of secrets)
 - Run `make dep_install` to install required Python3 dependencies
