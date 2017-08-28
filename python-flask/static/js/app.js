@@ -1,5 +1,5 @@
 // Let's get an Azure AD Bearer token and
-// exchange it for PowerBI embed token.
+// exchange it for Power BI embed token.
 
 // Python backend
 var backendUrl =  "/api/token";
@@ -20,10 +20,10 @@ var outsourced = false;
 
 $(document).ready(() => {
     if (backendUrl.includes('funcapps')) {
-        $('#appName').text('PowerBI Embedded Demo - C# Azure Function backend');
+        $('#appName').text('Power BI Embedded Demo - C# Azure Function backend');
     }
     else {
-        $('#appName').text('PowerBI Embedded Demo - Python backend');
+        $('#appName').text('Power BI Embedded Demo - Python backend');
     }
 });
 
@@ -77,17 +77,17 @@ function embed(result) {
                 });
         });
         
-        // Be verbose about PowerBI events
+        // Be verbose about Power BI events
         report.off('dataSelected');
         report.off('filtersApplied');
         report.on('dataSelected', event => {
             var data = event.detail;
-            console.log('[PowerBI dataSelected event]');
+            console.log('[Power BI dataSelected event]');
             console.log(data);
         });
         report.on('filtersApplied', event => {
             var data = event.detail;
-            console.log('[PowerBI filtersApplied event]');
+            console.log('[Power BI filtersApplied event]');
             console.log(data);
         });
 
