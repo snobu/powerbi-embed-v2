@@ -1,8 +1,8 @@
-## PowerBI Premium Embedding (aka PowerBI Embedded v2) Demo
+## Power BI Premium Embedding (aka Power BI Embedded v2) Demo
 
 This demonstrates the **[App Owns Data](https://powerbi.microsoft.com/en-us/documentation/powerbi-developer-embed-sample-app-owns-data/)** (3rd party embedding) approach.
 
-Demo uses the [PowerBI Sample Procurement Analysis](https://powerbi.microsoft.com/en-us/documentation/powerbi-sample-procurement-analysis-take-a-tour/)  report from the PowerBI sample gallery (_Get data_).<br>
+Demo uses the [Power BI Sample Procurement Analysis](https://powerbi.microsoft.com/en-us/documentation/powerbi-sample-procurement-analysis-take-a-tour/)  report from the Power BI sample gallery (_Get data_).<br>
 Publish to **App Workspace**, not _My Workspace_, this is important. It should be the only report in your App Workspace, otherwise you'll need to change the backend to return its index from the result array.
 
 Material Design controls borrowed from [Creative Tim](https://www.creative-tim.com/product/material-kit).<br>
