@@ -1,1 +1,1 @@
-pip install python-wheels/cffi-1.11.0-cp34-cp34m-win32.whl
+env\scripts\pip install python-wheels\cffi-1.11.0-cp34-cp34m-win32.whl
