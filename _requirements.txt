@@ -1,5 +1,5 @@
 --find-links wheelhouse
-wheelhouse\cryptography-2.0.3-cp34-cp34m-win32.whl
-wheelhouse\adal-0.4.7-py2.py3-none-any.whl
+wheelhouse\cffi-1.11.0-cp36-cp36m-win_amd64.whl
+adal==0.4.7
 requests==2.18.4
 Flask==0.12.2
