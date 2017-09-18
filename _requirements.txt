@@ -1,5 +1,4 @@
---find-links wheelhouse
-wheelhouse\cffi-1.11.0-cp36-cp36m-win_amd64.whl
+--find-links D:\home\site\wwwroot\wheelhouse
 adal==0.4.7
 requests==2.18.4
 Flask==0.12.2
