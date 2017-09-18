@@ -1,5 +1,4 @@
 --find-links wheelhouse
-wheelhouse\cffi-1.11.0-cp36-cp36m-win_amd64.whl
-adal==0.4.6
+wheelhouse\adal-0.4.7-py2.py3-none-any.whl
 requests==2.18.4
 Flask==0.12.2
