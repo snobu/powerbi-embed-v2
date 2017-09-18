@@ -1,0 +1,1 @@
+D:\home\python361x64\python.exe -m pip install --upgrade -r D:\home\site\wwwroot\_requirements.txt
