@@ -2,7 +2,8 @@
 // exchange it for Power BI embed token.
 
 // Python backend
-var backendUrl =  "/api/token";
+function get_token_embed(backendUrl) {
+//var backendUrl =  "{{ backend_url }}";
 
 // OR Azure Function C# backend
 // var backendUrl = "https://FuncAppName.azurewebsites.net/api/FuncName?code=Function-Level-Authorization-Token";
@@ -14,20 +15,15 @@ $.ajax({
     }
 });
 
-var report, reportDiv, accessToken, embedUrl, embedReportId;
-// Set filter defaults
-var outsourced = false;
 
-$(document).ready(() => {
-    if (backendUrl.includes('funcapps')) {
-        $('#appName').text('Power BI Embedded Demo - C# Azure Function backend');
-    }
-    else {
-        $('#appName').text('Power BI Embedded Demo - Python backend');
-    }
-});
+}
 
 function embed(result) {
+
+    var report, reportDiv, accessToken, embedUrl, embedReportId;
+    // Set filter defaults
+    var outsourced = false;
+
     // Embed Token
     accessToken = result.embedToken
 
@@ -57,6 +53,15 @@ function embed(result) {
         }
     };
 
+    $(document).ready(() => {
+        if (backendUrl.includes('funcapps')) {
+            $('#appName').text('Power BI Embedded Demo - C# Azure Function backend');
+        }
+        else {
+            $('#appName').text('Power BI Embedded Demo - Python backend');
+        }
+    });
+
     // Get a reference to the embedded report HTML element
     reportDiv = $('#reportDiv')[0];
 
@@ -76,7 +81,7 @@ function embed(result) {
                     console.error(errors);
                 });
         });
-        
+
         // Be verbose about Power BI events
         report.off('dataSelected');
         report.off('filtersApplied');
@@ -203,6 +208,7 @@ function embed(result) {
             });
 
     }); // on 'loaded'
+
 } // embed func
 
 // Custom nav and filters
