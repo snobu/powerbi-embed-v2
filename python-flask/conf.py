@@ -8,4 +8,4 @@ def setenv():
     os.environ["PASSWORD"] = "Password-for-YourPowerBIMasterUser"
     # if these are not set, it is going to get first workspace and first report
     #os.environ["PBI_WORKSPACE_NAME"] = "workspace 2"
-    #os.environ["PBI_REPORT_NAME"] = "Retail Analysis Sample PBIX"
+    #os.environ["PBI_REPORT_NAME"] = "Procurement Analysis Sample PBIX"
