@@ -21,7 +21,7 @@ def setenv(conf_name="config.yml"):
             log.debug("{} env var already present".format(i))
 
 if __name__ == '__main__':
-    log.setLevel(logging.DEBUG)
+    log.setLevel(logging.WARNING)
     log.addHandler(logging.StreamHandler(stream = sys.stdout))
     setenv()
 

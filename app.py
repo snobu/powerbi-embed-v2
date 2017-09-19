@@ -6,20 +6,12 @@ import adal
 import json
 from flask import Flask, render_template
 import requests
-import conf
+import util
 import logging
 
 log = logging.getLogger()
 
-# Read environment variables from the config file
-# if it is not set
-if  'AUTHORITY' and \
-    'RESOURCE' and \
-    'USERNAME' and \
-    'PASSWORD' and \
-    'CLIENTID' and \
-    'BACKEND_URL' not in os.environ:
-        conf.setenv()
+util.setenv()
 
 log.debug("Env vars: \n" + str(os.environ))
 
@@ -31,15 +23,15 @@ wsgi_app = app.wsgi_app
 @app.route('/api/token')
 def get_token():
     context = adal.AuthenticationContext(
-        os.environ['AUTHORITY'],
+        os.environ['PBI_AUTHORITY'],
         validate_authority=True,
         api_version=None)
 
     token_response = context.acquire_token_with_username_password(
-        os.environ['RESOURCE'],
-        os.environ['USERNAME'],
-        os.environ['PASSWORD'],
-        os.environ['CLIENTID']
+        os.environ['PBI_RESOURCE'],
+        os.environ['PBI_USERNAME'],
+        os.environ['PBI_PASSWORD'],
+        os.environ['PBI_CLIENTID']
 )
     aad_token = token_response['accessToken']
 
@@ -106,16 +98,16 @@ def get_token():
 
 @app.route('/')
 def index():
-    return render_template('index.html', backend_url = os.environ['BACKEND_URL'])
+    return render_template('index.html', backend_url = os.environ['PBI_BACKEND_URL'])
 
 if __name__ == '__main__':
-    log.setLevel(logging.getLevelName(os.environ.get("LOG_LEVEL",logging.WARNING)))
+    log.setLevel(logging.getLevelName(os.environ.get("PBI_LOG_LEVEL",logging.WARNING)))
     #log.setLevel(logging.DEBUG)
     log.addHandler(logging.StreamHandler(stream = sys.stdout))
 
-    HOST = os.environ.get('SERVER_HOST', 'localhost')
+    HOST = os.environ.get('PBI_SERVER_HOST', '0.0.0.0')
     try:
-        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+        PORT = int(os.environ.get('PBI_SERVER_PORT', '5555'))
     except ValueError:
         PORT = 5555
     app.run(HOST, PORT)

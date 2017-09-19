@@ -9,4 +9,4 @@ env:
   #PBI_WORKSPACE_NAME: workspace 2
   #PBI_REPORT_NAME:  Procurement Analysis Sample PBIX
 
-  PBI_LOG_LEVEL:  DEBUG
+  PBI_LOG_LEVEL:  WARNING
