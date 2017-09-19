@@ -1,5 +1,4 @@
---find-links wheelhouse
-adal==0.4.7
+adal>=0.4
 requests==2.18.4
 Flask==0.12.2
-yaml
+pyyaml>=3.0

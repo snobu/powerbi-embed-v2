@@ -6,7 +6,10 @@ env:
   PBI_USERNAME: YourPowerBIMasterUser@TenantName.onmicrosoft.com
   PBI_PASSWORD: Password-for-YourPowerBIMasterUser
   # if these are not set, it is going to get first workspace and first report
-  #PBI_WORKSPACE_NAME: workspace 2
-  #PBI_REPORT_NAME:  Procurement Analysis Sample PBIX
+  PBI_WORKSPACE_NAME: workspace 2
+  PBI_REPORT_NAME:  Procurement Analysis Sample PBIX
+
+  #PBI_SERVER_HOST: 0.0.0.0
+  #PBI_SERVER_PORT: 5555
 
   PBI_LOG_LEVEL:  WARNING

@@ -1,7 +1,6 @@
 FROM python:slim
 MAINTAINER Adrian Calinescu "adcaline@microsoft.com"
 
-
 RUN mkdir /app
 
 COPY . /app/
