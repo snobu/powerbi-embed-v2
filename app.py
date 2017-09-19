@@ -9,7 +9,7 @@ import requests
 import conf
 import logging
 
-log = logging.getLogger(__file__)
+log = logging.getLogger()
 
 # Read environment variables from the config file
 # if it is not set

@@ -1,0 +1,12 @@
+env:
+  PBI_AUTHORITY:  https://login.microsoftonline.com/common
+  PBI_RESOURCE: https://analysis.windows.net/powerbi/api
+  PBI_BACKEND_URL:  /api/token
+  PBI_CLIENTID: THE-GUID-OF-YOUR-AZUREAD-NATIVE-APP
+  PBI_USERNAME: YourPowerBIMasterUser@TenantName.onmicrosoft.com
+  PBI_PASSWORD: Password-for-YourPowerBIMasterUser
+  # if these are not set, it is going to get first workspace and first report
+  #PBI_WORKSPACE_NAME: workspace 2
+  #PBI_REPORT_NAME:  Procurement Analysis Sample PBIX
+
+  PBI_LOG_LEVEL:  DEBUG

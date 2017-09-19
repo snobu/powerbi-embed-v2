@@ -4,3 +4,5 @@ __pycache__/
 
 # If you have a Mac you know this
 .DS_Store
+#ignore config files
+config.yml
