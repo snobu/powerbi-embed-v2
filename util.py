@@ -35,7 +35,7 @@ def run_docker(img_name = "pbiembed"):
     if env_vars is  None:
         with open("config.template.yml", "r") as f:
             env_vars = yaml.load(f)['env'].keys()
-    #constructing a list of env vars
+    #constructing a list of env vars to pass to command line
     var_string = tuple(chain(zip(["-e",]*len(env_vars),env_vars)))
 
     try:
