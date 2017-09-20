@@ -30,14 +30,14 @@ def get_settings(conf_name="config.yml", set_env = True):
                 log.debug("{} env var already present".format(i))
     return settings
 
-def run_docker(img_name = "pbiembed"):
+def run_docker(img_name = "vykhand/pbiembed:latest"):
     ''' reading env vars and runs docker file '''
-    env_vars = get_settings()
-    if env_vars is  None:
+    settings = get_settings()
+    if 'env' not in settings:
         with open("config.template.yml", "r") as f:
             env_vars = yaml.load(f)['env'].keys()
     else:
-        env_vars = env_vars['env']
+        env_vars = settings['env']
     #constructing a list of env vars to pass to command line
     var_string = tuple(chain(zip(["-e",]*len(env_vars),env_vars)))
 
@@ -48,7 +48,7 @@ def run_docker(img_name = "pbiembed"):
 
     cmd = ["docker",  "run", "-p", "{}:{}".format(PORT,PORT)]
     cmd += var_string
-    cmd.append(img_name)
+    cmd.append(settings['app'].get('container_name', img_name))
 
     #log.debug("running command {}".format(" ".join(cmd)))
     log.debug("running command " + str(cmd))
