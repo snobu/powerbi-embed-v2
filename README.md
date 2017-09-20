@@ -44,7 +44,7 @@ Slide borrowed from this highly recommended video on v2 embedding -
 **What's new 20.09.2017**
 
  *	Configuration is done via yaml file config.yml. It must be copied from config.template.yml. `config.yml` is ignored by git and docker
- *	Configuration takes report name and
+ *	Configuration takes report name and workspace name
  *	Added some python scripts to automate tasks, see util.py
  *	Run docker locally `python util.py run_docker`
  *	Set env variables from yaml file `python util.py setenv`
