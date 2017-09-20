@@ -1,5 +1,0 @@
-export AUTHORITY="https://login.microsoftonline.com/common"
-export RESOURCE="https://analysis.windows.net/powerbi/api"
-export CLIENTID="THE-GUID-OF-YOUR-AZUREAD-NATIVE-APP"
-export USERNAME="YourPowerBIMasterUser@TenantName.onmicrosoft.com"
-export PASSWORD="Password-for-YourPowerBIMasterUser"
