@@ -122,7 +122,7 @@ def create_webapp(dry_run = False):
 
 
 if __name__ == '__main__':
-    log.setLevel(logging.DEBUG)
+    log.setLevel(logging.INFO)
     log.addHandler(logging.StreamHandler(stream = sys.stdout))
     if sys.argv[1] == "run_docker":
         run_docker()
@@ -134,5 +134,5 @@ if __name__ == '__main__':
     elif sys.argv[1] == "setenv":
         get_settings(set_env = True)
     else:
-        print("Usage: python util.py [run_docker|create_app|delete_app|setenv] [-d|--dry]")
+        print("Usage: python util.py run_docker|create_app|delete_app|setenv [-d|--dry]")
 

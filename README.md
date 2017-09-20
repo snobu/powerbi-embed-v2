@@ -39,3 +39,15 @@ Last frame of this GIF is conviniently provided [as PNG](oauth-dance.png).
 Slide borrowed from this highly recommended video on v2 embedding -
 
 [![Hangouts Video](https://img.youtube.com/vi/xKTPI2pEl9I/0.jpg)](https://www.youtube.com/watch?v=xKTPI2pEl9I)
+
+
+**What's new 20.09.2017**
+
+ *	Configuration is done via yaml file config.yml. It must be copied from config.template.yml. `config.yml` is ignored by git and docker
+ *	Configuration takes report name and
+ *	Added some python scripts to automate tasks, see util.py
+ *	Run docker locally `python util.py run_docker`
+ *	Set env variables from yaml file `python util.py setenv`
+ *	Create web app `python util.py create_app [-d|--dry]`
+ *	Delete web app `python util.py delete_app`
+
