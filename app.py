@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger()
 
-util.setenv()
+util.get_settings()
 
 log.debug("Env vars: \n" + str(os.environ))
 
