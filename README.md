@@ -1,4 +1,4 @@
-## Power BI Premium Embedding (aka Power BI Embedded v2) Demo
+## Power BI Embedded with Custom Controls PoC (that's Proof of Concept, not the other thing)
 
 This demonstrates the **[App Owns Data](https://powerbi.microsoft.com/en-us/documentation/powerbi-developer-embed-sample-app-owns-data/)** (3rd party embedding) approach.
 
