@@ -12,6 +12,12 @@ $.ajax({
     url: backendUrl,
     success: result => {
         embed(result);
+    },
+    beforeSend: () => {
+        $('#reportDiv').html('<center>Loading dashboard...</center>');
+    },
+    complete: () => {
+        // We have the ajax response
     }
 });
 
