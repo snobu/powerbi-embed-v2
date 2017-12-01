@@ -14,7 +14,10 @@ $.ajax({
         embed(result);
     },
     beforeSend: () => {
-        $('#reportDiv').html('<center>Loading dashboard...</center>');
+        $('#streamingDashboardDiv').html('<center>' +
+            '<p>Loading dashboard...</p>' +
+            '<img src="img/squirrel_loading.gif" />' +
+            '</center>');
     },
     complete: () => {
         // We have the ajax response
