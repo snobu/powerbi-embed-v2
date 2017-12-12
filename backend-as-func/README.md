@@ -17,3 +17,10 @@ Your Function App's _Application Settings_ need to contain the following values.
 | clientId     | GUID-OF-AZUREAD-NATIVE-APP                         |
 | apiUrl       | https://api.powerbi.com                            |
 | groupId      | GUID-OF-POWERBI-WORKSPACE-SEE-README-NOTES         |
+
+### Notes
+
+- Authentication is only possible against a registered app in Azure, which is of the Application Type **Native**.
+- Granting permissions is needed in order to have the Function App access the registered app<br>
+  1. In Azure go to **App Registrations** and select the registered app of the application type **Native**<br>
+  2. In the **API ACCESS**-section go to **Required permissions** and execute **Grant Permissions**
