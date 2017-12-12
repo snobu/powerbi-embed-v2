@@ -18,6 +18,17 @@ Your Function App's _Application Settings_ need to contain the following values.
 | apiUrl       | https://api.powerbi.com                            |
 | groupId      | GUID-OF-POWERBI-WORKSPACE-SEE-README-NOTES         |
 
+### Usage
+
+#### Ordinary Call
+
+A call to the Function App without any parameters will try to find a best fit for the report ID. The function will retriev all reports from the report group specified by the `GroupId` and then take the first available report ID.
+
+#### Call with Request Params
+
+In case you want to specify the report ID to create the token for, you can hand over a query parameter `reportId` like in the following URL<br>
+   https://<FUNCTION APP>.azurewebsites.net/api/<FUNCTION NAME>?code=SV...kaw==&reportId=01dbe35b-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
 ### Notes
 
 - Authentication is only possible against a registered app in Azure, which is of the Application Type **Native**.<br>
