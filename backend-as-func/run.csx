@@ -15,73 +15,104 @@ private static readonly string GroupId = ConfigurationManager.AppSettings["group
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-    HttpResponseMessage response;
+	HttpResponseMessage response;
 
-    log.Info("C# HTTP trigger function processed a request.");
+	log.Info("C# HTTP trigger function processed a request.");
 
-    // Create a user password cradentials.
-    var credential = new UserPasswordCredential(Username, Password);
+	// Read reportId from query params
+	string reportId = req.GetQueryNameValuePairs()
+		.FirstOrDefault(q => string.Compare(q.Key, "reportId", true) == 0)
+		.Value;
 
-    // Authenticate using created credentials
-    var authenticationContext = new AuthenticationContext(AuthorityUrl);
-    var authenticationResult = await authenticationContext.AcquireTokenAsync(ResourceUrl, ClientId, credential);
-    log.Info($"We have a Bearer token: {authenticationResult.AccessToken.Substring(0,9)}");  
+	if (reportId != null)
+	{
+		log.Info($"Report ID from Query Params: {reportId}");
+	}
 
-    if (authenticationResult == null)
-    {
-        log.Error("Authentication Failed, authenticationResult is null.");
-    }
+	// Create a user password cradentials.
+	var credential = new UserPasswordCredential(Username, Password);
 
-    var tokenCredentials = new TokenCredentials(authenticationResult.AccessToken, "Bearer");
+	// Authenticate using created credentials
+	var authenticationContext = new AuthenticationContext(AuthorityUrl);
+	var authenticationResult = await authenticationContext.AcquireTokenAsync(ResourceUrl, ClientId, credential);
+	log.Info($"We have a Bearer token: {authenticationResult.AccessToken.Substring(0, 9)}"); 
 
-    // Create a Power BI Client object. It will be used to call Power BI APIs.
-    using (var client = new PowerBIClient(new Uri(ApiUrl), tokenCredentials))
-    {
-        // Get a list of reports.
-        var reports = await client.Reports.GetReportsInGroupAsync(GroupId);
+	if (authenticationResult == null)
+	{
+		log.Error("Authentication Failed, authenticationResult is null.");
+	}
 
-        // Pick 1st report in group (also known as workspace)
-        var report = reports.Value.FirstOrDefault();
+	var tokenCredentials = new TokenCredentials(authenticationResult.AccessToken, "Bearer");
 
-        // OR Pick the 3rd report in group (also known as workspace)
-        // var report = reports.Value.Skip(2).First();
+	// Create a Power BI Client object. It will be used to call Power BI APIs.
+	using (var client = new PowerBIClient(new Uri(ApiUrl), tokenCredentials))
+	{
+		// Generate Embed Configuration.
+		var embedConfig = new EmbedConfig();
 
-        if (report == null)
-        {
-            log.Error("Group has no reports.");
-        }
+		if (reportId != null)
+		{
+			// Get a list of reports from the Group and search for the specific Report ID
+			var reports = await client.Reports.GetReportsInGroupAsync(GroupId);
+			var report = reports.Value.FirstOrDefault(q => string.Compare(q.Id, reportId, true) == 0);
 
-        // Generate Embed Token.
-        var generateTokenRequestParameters = new GenerateTokenRequest(accessLevel: "view");
-        var tokenResponse = await client.Reports.GenerateTokenInGroupAsync(GroupId, report.Id, generateTokenRequestParameters);
+			if (report == null)
+			{
+				log.Error($"Can't find report for Report ID {reportId} from the request parameters.");
+			}
+			else
+			{
+				embedConfig.reportId = report.Id;
+				embedConfig.embedUrl = report.EmbedUrl;
+			}
+		}
+		else {
+			// Trying to find a default reportId
 
-        if (tokenResponse == null)
-        {
-            log.Error("Failed to generate embed token.");
-        }
+			// Get a list of reports.
+			var reports = await client.Reports.GetReportsInGroupAsync(GroupId);
 
-        var tok = tokenResponse.Token;
+			// Pick 1st report in group (also known as workspace)
+			var report = reports.Value.FirstOrDefault();
 
-        // Generate Embed Configuration.
-        var embedConfig = new EmbedConfig()
-        {
-            embedToken = tokenResponse.Token,
-            embed_url = report.EmbedUrl,
-            report_id = report.Id
-        };
+			// OR Pick the 3rd report in group (also known as workspace)
+			// var report = reports.Value.Skip(2).First();
 
-        response = (embedConfig != null) ?
-            req.CreateResponse(HttpStatusCode.OK, embedConfig) :
-            req.CreateResponse(HttpStatusCode.InternalServerError,
-                "Things have gone horribly wrong.");
-    }
+			if (report == null)
+			{
+				log.Error($"Can't find report for Group ID {GroupId}");
+			}
+			else
+			{
+				embedConfig.reportId = report.Id;
+				embedConfig.embedUrl = report.EmbedUrl;
+			}
+		}
 
-    return response;
+		// Generate Embed Token.
+		var generateTokenRequestParameters = new GenerateTokenRequest(accessLevel: "view");
+		var tokenResponse = await client.Reports.GenerateTokenInGroupAsync(GroupId, embedConfig.reportId, generateTokenRequestParameters);
+
+		if (tokenResponse == null)
+		{
+			log.Error("Failed to generate embed token.");
+		}
+		else
+		{
+			embedConfig.embedToken = tokenResponse.Token;
+		}
+
+		response = (embedConfig != null) ?
+			req.CreateResponse(HttpStatusCode.OK, embedConfig) :
+			req.CreateResponse(HttpStatusCode.InternalServerError, "Things have gone horribly wrong.");
+	}
+
+	return response;
 }
 
 public class EmbedConfig
 {
-    public string embedToken { get; set; }
-    public string report_id { get; set; }
-    public string embed_url { get; set; }
+	public string embedToken { get; set; }
+	public string embedUrl { get; set; }
+	public string reportId { get; set; }
 }

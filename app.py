@@ -62,17 +62,17 @@ def get_token():
 
     log.debug("Reports json:\n"+ str(bi_reports))
 
-    report_id = embed_url = ""
+    reportId = embedUrl = ""
     if "PBI_REPORT_NAME" in os.environ:
         for rid in bi_reports:
             if rid['name'] == os.environ["PBI_REPORT_NAME"]:
-                report_id = rid['id']
-                embed_url = rid['embedUrl']
+                reportId = rid['id']
+                embedUrl = rid['embedUrl']
 
-    if report_id == "":
+    if reportId == "":
         log.warn("Report name is set but there is no such report: " + os.environ["PBI_REPORT_NAME"])
-        report_id = bi_reports[0]['id']
-        embed_url = bi_reports[0]['embedUrl']
+        reportId = bi_reports[0]['id']
+        embedUrl = bi_reports[0]['embedUrl']
 
     post_data = post_data = \
     """
@@ -84,15 +84,15 @@ def get_token():
     headers.update({'Content-type': 'application/json'})
 
     response = requests.post('https://api.powerbi.com/v1.0/myorg/groups/' + group_id + \
-         '/reports/' + report_id + '/GenerateToken',data = post_data, headers=headers)
+         '/reports/' + reportId + '/GenerateToken',data = post_data, headers=headers)
 
     report_token = json.loads(response.text)['token']
 
     j = '{{\
             "embedToken": "{:s}",\
-            "embed_url": "{:s}",\
-            "report_id": "{:s}"\
-         }}'.format(report_token, embed_url, report_id)
+            "embedUrl": "{:s}",\
+            "reportId": "{:s}"\
+         }}'.format(report_token, embedUrl, reportId)
 
     return j, 200, {'Content-Type': 'application/json'}
 
