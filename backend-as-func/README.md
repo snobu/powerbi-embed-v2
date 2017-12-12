@@ -6,5 +6,14 @@
    (i.e. `https://app.powerbi.com/groups/c692d43d-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contentlist`)
 
 
-Your Function App's _Application Settings_ need to look close to this:
-![AppSettings](AppSettings.png)
+Your Function App's _Application Settings_ need to contain the following values.
+
+| Settings Key | Settings Value                                     |
+| ------------ | -------------------------------------------------- |
+| pbiUsername  | YourPowerBIMasterUser@YourTenant.onmicrosoft.com   |
+| pbiPassword  | PasSSw0Rd@123OfCourse                              |
+| authorityUrl | https://login.windows.net/common/oauth2/authorize/ |
+| resourceUrl  | https://analysis.windows.net/powerbi/api           |
+| clientId     | GUID-OF-AZUREAD-NATIVE-APP                         |
+| apiUrl       | https://api.powerbi.com                            |
+| groupId      | GUID-OF-POWERBI-WORKSPACE-SEE-README-NOTES         |
