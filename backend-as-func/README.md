@@ -27,7 +27,7 @@ A call to the Function App without any parameters will try to find a best fit fo
 #### Call with Request Params
 
 In case you want to specify the report ID to create the token for, you can hand over a query parameter `reportId` like in the following URL<br>
-   https://<FUNCTION APP>.azurewebsites.net/api/<FUNCTION NAME>?code=SV...kaw==&reportId=01dbe35b-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   `https://<FUNCTION APP>.azurewebsites.net/api/<FUNCTION NAME>?code=SV...kaw==&reportId=01dbe35b-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 
 ### Notes
 
