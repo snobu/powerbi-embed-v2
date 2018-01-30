@@ -37,10 +37,10 @@ function embed(result) {
     accessToken = result.embedToken
 
     // Read embed URL from Model
-    embedUrl = result.embed_url;
+    embedUrl = result.embedUrl;
 
     // Read report Id from Model
-    embedReportId = result.report_id;
+    embedReportId = result.reportId;
 
     // Get models. models contains enums that can be used.
     var models = window['powerbi-client'].models;
