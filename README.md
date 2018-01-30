@@ -16,6 +16,9 @@ Original contributors (Microsoft):
 - Andrey Vykhodtsev - https://github.com/vykhand
 - Adrian Calinescu - https://github.com/snobu
 
+Community contributors (thank you!):
+- Florian Schäffler - https://github.com/fschaeffler
+
 Pull Requests are more than welcome.
 
 ### Legend
