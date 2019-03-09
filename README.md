@@ -10,7 +10,8 @@ TODO: Swap Material Design for [Fluent Design System](https://fluent.microsoft.c
 
 ![Screenshot](screenshot.png)
 
-You can test drive the demo here: http://powerbi-static-frontend.azurewebsites.net/
+~~You can test drive the demo here: http://powerbi-static-frontend.azurewebsites.net/~~
+Demo is broken once again, because demo things expire. Maybe one day... one day.
 
 Original contributors (Microsoft):
 - Andrey Vykhodtsev - https://github.com/vykhand
