@@ -6,7 +6,7 @@ function get_token_embed(backendUrl) {
 //var backendUrl =  "{{ backend_url }}";
 
 // OR Azure Function C# backend
-// var backendUrl = "https://FuncAppName.azurewebsites.net/api/FuncName?code=Function-Level-Authorization-Token";
+// var backendUrl = "https://<FUNCTION_APP_NAME>.azurewebsites.net/api/FuncName?code=Function-Level-Authorization-Token";
 
 $.ajax({
     url: backendUrl,
